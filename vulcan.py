@@ -1,5 +1,5 @@
 """
-Vulcan: the highly logical way to pre-populate Redis
+Vulcan: the highly logical way to populate Redis
 
 Example:
 
@@ -53,14 +53,14 @@ class Vulcan(object):
 	            r.lpush(i,(randint(0, size)))
 
             elif datatype == 'sets':
-	        r = redis.Redis(host='localhost', port=6379, db=7)
+	        r = redis.Redis(host='localhost', port=6379, db=8)
 	        r.flushdb()
 	        bunch_o_keys = range(size)
 	        for i in bunch_o_keys:
                     r.sadd(i,(randint(0, size)))
 
             elif datatype == 'zsets':
-	        r = redis.Redis(host='localhost', port=6379, db=7)
+	        r = redis.Redis(host='localhost', port=6379, db=9)
 	        r.flushdb()
 	        bunch_o_keys = range(size)
 	        for i in bunch_o_keys:
