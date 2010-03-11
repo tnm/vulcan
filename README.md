@@ -34,7 +34,7 @@ First, create a Vulcan object like so:
 
 	s = Vulcan(10000)
 
-The default is to populate with strings, but to be explicit you could do:
+The default is to populate with Redis strings, but to be explicit you could do:
 
 	s = Vulcan(10000, 'strings')
 
