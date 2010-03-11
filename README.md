@@ -50,10 +50,19 @@ For lists, sets, or sorted sets:
 	sets = Vulcan(10000, 'sets')
 	zsets = Vulcan(10000, 'zsets')
 
-The keys are given sequential integer key names, and the values and scores are random integers. Next version, I'll likely add in some other options for random values (probably Star Trek-based).
+The keys are given sequential integer key names, and the values and scores are random integers. 
 
-That's all there is to it. You are now bursting with Redis data. Live long, and prosper. \V/_
+That's all there is to it. You are now bursting with Redis data. 
 
+
+Upcoming
+---------
+Next version, I'll add in some other options for random values (probably Star Trek-based).
+
+
+Most Importantly
+-----------------
+Live long, and prosper. \V/_
 
 MIT License
 ------------
