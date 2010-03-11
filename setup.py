@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-import unittest
+
 from setuptools import setup, find_packages
 
 version = '0.1.0'
