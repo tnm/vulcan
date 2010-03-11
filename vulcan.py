@@ -18,7 +18,7 @@ from random import randint
 
 class Vulcan(object):
     """
-    Custom testing object from the future	
+    Generate data for Redis	
     """
     def __init__(self, size, datatype='strings'):
         """
@@ -33,37 +33,37 @@ class Vulcan(object):
         """
         Populate Redis with random values.
         """
+        size = self.size
         datatype = self.datatype
-	size = self.size
 
         if type(size) == int:
 
             if datatype == 'strings':
-		r = redis.Redis(host='localhost', port=6379, db=6)
-		r.flushdb()
-                bunch_o_keys = range(size)
-                for i in bunch_o_keys: 
-                    r.set(i, (randint(0, size)))
+	        r = redis.Redis(host='localhost', port=6379, db=6)
+	        r.flushdb()
+	        bunch_o_keys = range(size)
+	        for i in bunch_o_keys: 
+	            r.set(i, (randint(0, size)))
 
             elif datatype == 'lists':
-		r = redis.Redis(host='localhost', port=6379, db=7)
-		r.flushdb()
-                bunch_o_keys = range(size)
-                for i in bunch_o_keys:
-                    r.lpush(i,(randint(0, size)))
+	        r = redis.Redis(host='localhost', port=6379, db=7)
+	        r.flushdb()
+	        bunch_o_keys = range(size)
+	        for i in bunch_o_keys:
+	            r.lpush(i,(randint(0, size)))
 
             elif datatype == 'sets':
-		r = redis.Redis(host='localhost', port=6379, db=8)
-		r.flushdb()
-                bunch_o_keys = range(size)
-                for i in bunch_o_keys:
+	        r = redis.Redis(host='localhost', port=6379, db=7)
+	        r.flushdb()
+	        bunch_o_keys = range(size)
+	        for i in bunch_o_keys:
                     r.sadd(i,(randint(0, size)))
 
             elif datatype == 'zsets':
-		r = redis.Redis(host='localhost', port=6379, db=9)
-		r.flushdb()
-                bunch_o_keys = range(size)
-                for i in bunch_o_keys:
+	        r = redis.Redis(host='localhost', port=6379, db=7)
+	        r.flushdb()
+	        bunch_o_keys = range(size)
+	        for i in bunch_o_keys:
                     r.zadd(i,(randint(0, size)), (randint(0, size)))
 
             else:
