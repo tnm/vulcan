@@ -44,11 +44,11 @@ For lists, sets, or sorted sets:
 	sets = Vulcan(10000, 'sets')
 	zsets = Vulcan(10000, 'zsets')
 
-Now call your object like so:
+Now just:
 
 	s.populate()
 
-That will clear out database #6 and populate it with your random data. You're all set.
+That will clear out database 6, and populate it with your random data. You're all set.
 
 The keys are given random integer key names, and the values and scores are also given random integers. Next version, I'll likely add in some other options for random values (probably Star Trek-based).
 
