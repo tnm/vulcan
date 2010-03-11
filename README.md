@@ -42,7 +42,7 @@ For lists, sets, or sorted sets:
 
 	lists = Vulcan(10000, 'lists')
 	sets = Vulcan(10000, 'sets')
-	zsets = Vulcan(1000, 'zsets')
+	zsets = Vulcan(10000, 'zsets')
 
 Now call your object like so:
 
