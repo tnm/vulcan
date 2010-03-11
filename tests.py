@@ -7,7 +7,6 @@ r7 = redis.Redis(host='localhost', port=6379, db=7)
 r8 = redis.Redis(host='localhost', port=6379, db=8)
 r9 = redis.Redis(host='localhost', port=6379, db=9)
 
-
 class TestVulcan(unittest.TestCase):
     """What is Kiri-kin-tha's first law of metaphysics?"""
 
