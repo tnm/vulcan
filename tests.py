@@ -18,31 +18,31 @@ class TestVulcan(unittest.TestCase):
 	r8.flushdb()
 	r9.flushdb()
 
- 	self.s = vulcan.Vulcan(1000, 'strings')
- 	self.l = vulcan.Vulcan(1000, 'lists')
- 	self.se = vulcan.Vulcan(1000, 'sets')
- 	self.z = vulcan.Vulcan(1000, 'zsets')
+ 	self.strings = vulcan.Vulcan(1000, 'strings')
+ 	self.lists = vulcan.Vulcan(1000, 'lists')
+ 	self.sets = vulcan.Vulcan(1000, 'sets')
+ 	self.zsets = vulcan.Vulcan(1000, 'zsets')
 
     def test_populate(self):
         """What is the electronic configuration of gadolinium?"""
-	s = self.s
-	l = self.l
-	se = self.se
-	z = self.z
+	strings = self.strings
+	lists = self.lists
+	sets = self.sets
+	zsets = self.zsets
 
-	s.populate()
+	strings.populate()
 	all_keys = r6.keys('*')
 	self.assertEquals(len(all_keys), 1000)
 	
-        l.populate()
+        lists.populate()
 	all_keys = r7.keys('*')
 	self.assertEquals(len(all_keys), 1000)
 	
-        se.populate()
+        sets.populate()
 	all_keys = r8.keys('*')
 	self.assertEquals(len(all_keys), 1000)
 	
-        z.populate()
+        zsets.populate()
 	all_keys = r9.keys('*')
 	self.assertEquals(len(all_keys), 1000)
 
