@@ -52,4 +52,4 @@ That will clear out database #6 and populate it with your random data. You're al
 
 The keys are given random integer key names, and the values and scores are also given random integers. Next version, I'll likely add in some other options for random values (probably Star Trek-based).
 
-That's all there is to it. You are now bursting with Redis data. Live long, and prosper. _\\//
+That's all there is to it. You are now bursting with Redis data. Live long, and prosper. \V/_
