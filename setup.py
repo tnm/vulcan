@@ -9,6 +9,9 @@ version = '0.1.0'
 
 LONG_DESCRIPTION = '''
 
+Quick Setup and Usage
+---------------------
+
 You'll need redis-py: http://github.com/andymccurdy/redis-py 
 
 Say you want to SET ten thousand keys, with randomly generated values.
