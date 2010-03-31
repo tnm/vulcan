@@ -55,10 +55,11 @@ The keys are given sequential integer key names, and the values and scores are r
 That's all there is to it. You are now bursting with Redis data. 
 
 
-Upcoming
+TODO
 ---------
-Next version, I'll add in some other options for random values (probably Star Trek-based).
 
+* Add hashes
+* Add option for non-integer values (maybe Star Trek-derived string values)
 
 Most Importantly
 -----------------
