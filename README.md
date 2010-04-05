@@ -17,9 +17,9 @@ Put Vulcan in your PYTHONPATH and you're all set.
 What It Does
 ---------------
 
-Vulcan will populate your Redis datastore with test data. It works for each of the built-in Redis data structures. It uses SET for strings, LPUSH for lists, SADD for sets, and ZADD for sorted sets. 
+Vulcan will populate your Redis datastore with test data. It works for each of the built-in Redis data structures. It uses SET for strings, LPUSH for lists, SADD for sets, ZADD for sorted sets, and HSET for hashes.
 
-Vulcan creates the test data on a separate Redis DB for each datatype: DB's 6, 7, 8, and 9, respectively.
+Vulcan creates the test data on a separate Redis DB for each datatype: DB's 5, 6, 7, 8, and 9, respectively.
 
 How To Do It
 -------------
@@ -42,13 +42,14 @@ Now just:
 
 	s.populate()
 
-That will clear out database 6, and populate it with your random data. You're all set.
+That will clear out database 5, and populate it with your random data. You're all set.
 
 For lists, sets, or sorted sets:
 
 	lists = Vulcan(10000, 'lists')
 	sets = Vulcan(10000, 'sets')
 	zsets = Vulcan(10000, 'zsets')
+	hashes = Vulcan(10000, 'hashes')
 
 The keys are given sequential integer key names, and the values and scores are random integers. 
 
@@ -58,7 +59,6 @@ That's all there is to it. You are now bursting with Redis data.
 TODO
 ---------
 
-* Add hashes
 * Add option for non-integer values (maybe Star Trek-derived string values)
 
 Most Importantly
