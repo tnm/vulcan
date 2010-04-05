@@ -4,7 +4,7 @@ import os
 
 from setuptools import setup, find_packages
 
-version = '0.1.0'
+version = '0.1.1'
 
 
 LONG_DESCRIPTION = '''
@@ -28,17 +28,18 @@ The default is to populate with strings, but to be explicit you could do:
 
 	s = Vulcan(10000, 'strings')
 
-For lists, sets, or sorted sets:
+For lists, sets, sorted sets, or hashes:
 
 	lists = Vulcan(10000, 'lists')
 	sets = Vulcan(10000, 'sets')
 	zsets = Vulcan(10000, 'zsets')
+        hashses = Vulcan(10000, 'hashes')
 
 Now just:
 
 	s.populate()
 
-That will clear out database 6, and populate it with your random data. You're all set.
+That will clear out database 5 (or 6 or 7 or 8 or 9, respectively), and populate it with your random data. You're all set.
 
 The keys are given random integer key names, and the values and scores are also given random integers. Next version, I'll likely add in some other options for random values (probably Star Trek-based).
 

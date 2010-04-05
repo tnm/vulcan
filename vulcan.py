@@ -9,7 +9,7 @@ Example:
 """
 
 __author__ = 'Ted Nyman'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __license__ = 'MIT'
 
 import redis
@@ -23,8 +23,8 @@ class Vulcan(object):
     def __init__(self, size, datatype='strings'):
         """
         Size is an integer representing how many keys you want. 
-        Datatype can be 'strings', 'lists', 'sets', or 'zsets.' 
-        'Strings' is the default datatype.		
+        Datatype can be 'strings', 'lists', 'sets', or 'zsets, or
+        'hashes.' The default data type is 'strings'.	
         """
         self.size = size		
         self.datatype = datatype
@@ -39,35 +39,42 @@ class Vulcan(object):
         if type(size) == int:
 
             if datatype == 'strings':
-	        r = redis.Redis(host='localhost', port=6379, db=6)
+	        r = redis.Redis(host='localhost', port=6379, db=5)
 	        r.flushdb()
 	        bunch_o_keys = range(size)
 	        for i in bunch_o_keys: 
 	            r.set(i, (randint(0, size)))
 
             elif datatype == 'lists':
-	        r = redis.Redis(host='localhost', port=6379, db=7)
+	        r = redis.Redis(host='localhost', port=6379, db=6)
 	        r.flushdb()
 	        bunch_o_keys = range(size)
 	        for i in bunch_o_keys:
 	            r.lpush(i,(randint(0, size)))
 
             elif datatype == 'sets':
-	        r = redis.Redis(host='localhost', port=6379, db=8)
+	        r = redis.Redis(host='localhost', port=6379, db=7)
 	        r.flushdb()
 	        bunch_o_keys = range(size)
 	        for i in bunch_o_keys:
                     r.sadd(i,(randint(0, size)))
 
             elif datatype == 'zsets':
-	        r = redis.Redis(host='localhost', port=6379, db=9)
+	        r = redis.Redis(host='localhost', port=6379, db=8)
 	        r.flushdb()
 	        bunch_o_keys = range(size)
 	        for i in bunch_o_keys:
                     r.zadd(i,(randint(0, size)), (randint(0, size)))
 
+            elif datatype == 'hashes':
+	        r = redis.Redis(host='localhost', port=6379, db=9)
+	        r.flushdb()
+	        bunch_o_keys = range(size)
+	        for i in bunch_o_keys:
+                    r.hset(i,(randint(0, size)), (randint(0, size)))
+
             else:
-                print "Error, can't populate. Options are 'strings', 'lists', 'sets', or 'zsets'. To do otherwise would be illogical."
+                print "Error, can't populate. Options are 'strings', 'lists', 'sets', 'zsets', or 'hashes'. To do otherwise would be illogical."
 
         else:
 	    print "Error, can't populate. You must specify an integer for the number of values." 
