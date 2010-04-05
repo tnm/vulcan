@@ -31,9 +31,12 @@ The default is to populate with strings, but to be explicit you could do:
 For lists, sets, sorted sets, or hashes:
 
 	lists = Vulcan(10000, 'lists')
+
 	sets = Vulcan(10000, 'sets')
+
 	zsets = Vulcan(10000, 'zsets')
-        hashses = Vulcan(10000, 'hashes')
+
+        hashes = Vulcan(10000, 'hashes')
 
 Now just:
 
