@@ -85,10 +85,4 @@ class Vulcan(object):
 
         else:
             raise VulcanError("Must specify a valid Redis datatype. %s" %(e))
- 
 
-
-
-
-			
-	
