@@ -56,10 +56,10 @@ The keys are given sequential integer key names, and the values and scores are r
 That's all there is to it. You are now bursting with Redis data. 
 
 
-TODO
----------
+THINGS I'LL BE DOING SHORTLY
+-----------------------------
 
-* Add option for non-integer values (maybe Star Trek-derived string values)
+* Make test db locations configurable
 
 Most Importantly
 -----------------
