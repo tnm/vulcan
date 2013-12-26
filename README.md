@@ -1,75 +1,63 @@
-Vulcan
-======
+vulcan
+=======
 
-**The highly logical, ultra-simple way to populate Redis with data**
+**vulcan** generates test keys for Redis.
 
-Perhaps you want to populate Redis with a bunch of test data? Or maybe you want to try and reproduce a bug you're facing, and need to pour in a lot of random data?
+usage
+------
 
-Well, you want Vulcan.
+vulcan is just a single C file. To use, run:
 
-So Simple, Even a Klingon Can Do It
----------------------------------------
+```
+make
+```
 
-Vulcan is written in Python, so all you'll need is [redis-py](http://github.com/andymccurdy/redis-py "redis-py").
+Running `make` in the vulcan directory will produce an executable called `vulcan`.
 
-Put Vulcan in your PYTHONPATH and you're all set.
+vulcan expects you to have
+[hiredis](https://github.com/redis/hiredis.git) available for linking. (You can
+`brew install hiredis` on OS X, do a source install, or just use your standard
+distro packaging.) vulcan also expects `pthreads`.
 
-What It Does
----------------
+Usage is straight-forward:
 
-Vulcan will populate your Redis datastore with test data. It works for each of the built-in Redis data structures. It uses SET for strings, LPUSH for lists, SADD for sets, ZADD for sorted sets, and HSET for hashes.
+```
+./vulcan [number of keys] [string|list|set|zset] -h [host] -p [port]
+```
 
-Vulcan creates the test data on a separate Redis DB for each datatype: DB's 5, 6, 7, 8, and 9, respectively.
+The first argument is the number of keys you wish to generate. vulcan
+doesn't enforce anything besides whatever `LONG_MAX` is on your system,
+although I'd advise you use fewer keys than that.
 
-How To Do It
--------------
+The second argument is one of `string`, `list`, `set`, or
+`zset`. This is the Redis datatype you wish to generate.
 
-Say you want to SET ten thousand keys, with randomly generated values.
+The other options are not required. If you don't pass in `host` or `port`
+arguments, vulcan will use defaults of `127.0.0.1` and port `6390`
+(note that, for safety, that port number is not the standard
+Redis port of `6379`).
 
-Here's all you need to do:
+vulcan uses 40 threads to speed up the key generation. On a basic laptop,
+vulcan can generate and set 10,000 keys in about 600 milliseconds (for any
+datatype).
 
-First, create a Vulcan object like so:
+example
+---------
 
-	from vulcan import Vulcan
+```
+$ ./vulcan 10000 zset
+[vulcan] Using hostname 127.0.0.1 and port 6390
+[vulcan] set 10000 zsets in 660.035000 milliseconds
+```
 
-	s = Vulcan(10000)
+```
+$ ./vulcan 10000 string -h localhost -p 6391
+[vulcan] Using hostname localhost and port 6391
+[vulcan] set 10000 strings in 494.922000 milliseconds
+```
 
-The default is to populate with Redis strings, but to be explicit you could do:
+license
+--------
 
-	s = Vulcan(10000, 'strings')
+MIT
 
-Now just:
-
-	s.populate()
-
-That will clear out database 5, and populate it with your random data. You're all set.
-
-For lists, sets, or sorted sets:
-
-	lists = Vulcan(10000, 'lists')
-	sets = Vulcan(10000, 'sets')
-	zsets = Vulcan(10000, 'zsets')
-	hashes = Vulcan(10000, 'hashes')
-
-The keys are given sequential integer key names, and the values and scores are random integers. 
-
-That's all there is to it. You are now bursting with Redis data. 
-
-
-THINGS I'LL BE DOING SHORTLY
------------------------------
-
-* Make test db locations configurable
-
-Most Importantly
------------------
-Live long, and prosper. \V/_
-
-MIT License
-------------
-
-Copyright (c) 2010 Ted Nyman
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
