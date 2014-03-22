@@ -41,9 +41,9 @@ void generate_data(void *vulcan_params_pt) {
     char command[COMMAND_LEN];
     strcpy(command, vulcan_params->command);
 
-    // get a Redis context and connection
+    // Get a Redis context and connection
     redisContext *context;
-    struct timeval timeout = { 3, 500000 }; // 3.5 seconds
+    struct timeval timeout = { 2, 500000 }; // 2.5 seconds
     context = redisConnectWithTimeout(hostname, port, timeout);
     if (context == NULL || context->err) {
         if (context) {
@@ -113,7 +113,7 @@ int main(int argc, char **argv) {
 
     fprintf(stderr, "[vulcan] Using hostname %s and port %i\n", hostname, port);
 
-    // Determine type
+    // Determine Redis datatype
     int data_type;
     char command[COMMAND_LEN];
 
@@ -129,11 +129,11 @@ int main(int argc, char **argv) {
     } else if (strncmp(type, "zset", 4) == 0) {
         data_type = ZSET;
         strcpy(command, "ZADD");
-    } else {
-        usage();
+    } else { 
+        usage(); // invalid datatype
     }
 
-    // Do the work and time it. We'll print timing data to stderr.
+    // Do the actual work and time it. We'll print timing data to stderr.
     struct timeval t1, t2;
     double elapsed_time;
     gettimeofday(&t1, NULL);
