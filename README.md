@@ -12,7 +12,7 @@ vulcan is just a single C file. To use, run:
 make
 ```
 
-Running `make` in the vulcan directory will produce an executable called `vulcan`.
+Running `make` in the `vulcan/` directory will produce an executable called `vulcan`.
 
 vulcan expects you to have
 [hiredis](https://github.com/redis/hiredis.git) available for linking. (You can
@@ -26,7 +26,7 @@ Usage is straight-forward:
 ```
 
 The first argument is the number of keys you wish to generate. vulcan
-doesn't enforce anything besides whatever `LONG_MAX` is on your system,
+restricts this only to whatever `LONG_MAX` is on your system,
 although I'd advise you use fewer keys than that.
 
 The second argument is one of `string`, `list`, `set`, or
@@ -40,6 +40,8 @@ Redis port of `6379`).
 vulcan uses 40 threads to speed up the key generation. On a basic laptop,
 vulcan can generate and set 10,000 keys in about 600 milliseconds (for any
 datatype).
+
+vulcan will also output some timing data on `stderr` when run.
 
 example
 ---------
