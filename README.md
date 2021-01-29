@@ -38,7 +38,7 @@ arguments, vulcan will use defaults of `127.0.0.1` and port `6390`
 Redis port of `6379`).
 
 vulcan uses 40 threads to speed up the key generation. On a basic laptop,
-vulcan can generate and set 10,000 keys in about 600 milliseconds (for any
+vulcan can generate and set 100,000 keys in about 600 milliseconds (for any
 datatype).
 
 vulcan will also output some timing data on `stderr` when run.
@@ -47,15 +47,27 @@ example
 ---------
 
 ```
+$ ./vulcan 100000 string -h localhost -p 6391
+[vulcan] Using hostname localhost and port 6391
+[vulcan] set 100000 strings in 623.819000 milliseconds
+```
+
+```
+./vulcan 100000 set -h localhost -p 6391
+[vulcan] Using hostname localhost and port 6391
+[vulcan] set 100000 sets in 647.544000 milliseconds
+```
+
+```
 $ ./vulcan 10000 zset
 [vulcan] Using hostname 127.0.0.1 and port 6390
-[vulcan] set 10000 zsets in 660.035000 milliseconds
+[vulcan] set 10000 zsets in 67.041000 milliseconds
 ```
 
 ```
 $ ./vulcan 10000 string -h localhost -p 6391
 [vulcan] Using hostname localhost and port 6391
-[vulcan] set 10000 strings in 494.922000 milliseconds
+[vulcan] set 10000 strings in 73.126000 milliseconds
 ```
 
 license
