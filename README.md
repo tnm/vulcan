@@ -35,7 +35,9 @@ The second argument is one of `string`, `list`, `set`, or
 The other options are not required. If you don't pass in `host` or `port`
 arguments, vulcan will use defaults of `127.0.0.1` and port `6390`
 (note that, for safety, that port number is not the standard
-Redis port of `6379`).
+Redis port of `6379`). You do need to pass in both `host` and `port` —
+vulcan won't assume port `6500` is also `localhost`. You need both.
+Otherwise it'll get mad.
 
 vulcan uses 40 threads to speed up the key generation. On a basic laptop,
 vulcan can generate and set 100,000 keys in about 600 milliseconds (for any
